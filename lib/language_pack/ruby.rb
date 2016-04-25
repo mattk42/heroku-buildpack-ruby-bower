@@ -693,7 +693,7 @@ ERROR
 
       load_bower_cache
 
-      pipe("echo \"MATT: $FURY_TOKEN\" ; /node_modules/bower/bin/bower install --config.storage.packages=vendor/bower/packages --config.storage.registry=vendor/bower/registry --config.tmp=vendor/bower/tmp 2>&1")
+      pipe("echo \"MATT: $FURY_TOKEN\" ; ./node_modules/bower/bin/bower install --config.storage.packages=vendor/bower/packages --config.storage.registry=vendor/bower/registry --config.tmp=vendor/bower/tmp 2>&1")
       if $?.success?
         log "bower", :status => "success"
         puts "Cleaning up the bower tmp."
@@ -818,7 +818,7 @@ params = CGI.parse(uri.query || "")
       { "DATABASE_URL" => database_url }
     else
       {}
-    end.merge(user_env_hash)
+    env.merge(user_env_hash)
   end
 
   def database_url
